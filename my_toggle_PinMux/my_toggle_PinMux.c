@@ -46,8 +46,17 @@
 #include "driverlib/gpio.h"
 
 
-#define led 0x04 // green led
+#define BLUE_MASK 0x04
 //*****************************************************************************
+//! Create and implement two new projects my_switch_PinMux and my_toggle_PinMux, which 
+//! perform the same functions as my_switch and my_toggle did, respectively. my_switch and 
+//! my_toggle are based on the two projects you implemented in Lab 3. In my_switch_PinMux, when 
+//! SW1 is pressed, the green LED is turned off, otherwise the green LED is on. 
+//! my_toggle_PinMux makes the blue LED flash every one second (i.e. the LED on for one second 
+//! and then off for one second, repeatedly).
+//
+//
+
 void
 PortFunctionInit(void)
 {
@@ -69,7 +78,7 @@ int main(void){
 //and then off for one second, repeatedly)
 	
 	uint32_t freq = SysCtlClockGet();//get operating frequency
-	uint32_t toggle = led;// use this as variable to toggle with
+	uint32_t toggle = BLUE_MASK;// use this as variable to toggle with
 	GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_2,toggle);//turn on blue led
 	
 	
@@ -77,7 +86,7 @@ while(1){
 
 	SysCtlDelay(freq/3);// delay time in seconds is (# of loops)*(3 cycles)/freq, 
 	
-	toggle^=led;//change toggle bits from 0x00 to 0x04 
+	toggle^=BLUE_MASK;//change toggle bits from 0x00 to 0x04 
 	GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_2,toggle);//write toggle to PF2 
 }
 
