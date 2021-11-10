@@ -1,0 +1,10 @@
+.\objects\my_toggle_pinmux.o: my_toggle_PinMux.c
+.\objects\my_toggle_pinmux.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\my_toggle_pinmux.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\my_toggle_pinmux.o: my_toggle_PinMux.h
+.\objects\my_toggle_pinmux.o: ..\..\..\..\inc/hw_types.h
+.\objects\my_toggle_pinmux.o: ..\..\..\..\inc/hw_memmap.h
+.\objects\my_toggle_pinmux.o: ..\..\..\..\inc/hw_gpio.h
+.\objects\my_toggle_pinmux.o: ..\..\..\..\driverlib/sysctl.h
+.\objects\my_toggle_pinmux.o: ..\..\..\..\driverlib/pin_map.h
+.\objects\my_toggle_pinmux.o: ..\..\..\..\driverlib/gpio.h
