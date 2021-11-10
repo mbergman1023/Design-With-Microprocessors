@@ -1,13 +1,13 @@
 #include <stdint.h>
 #include "inc/tm4c123gh6pm.h"
 
-#define 	BLUE_MASK 		0x04
+#define 	RED_MASK 		0x02
 //*****************************************************************************
 //
 //!
-//! A very simple example that interfaces with the blud LED (PF2) and SW2 (PF0) 
-//! using direct register access. When SW2 is pressed, the LED is turned on. When 
-//! SW2 is released, the LED is turned off. 
+//!  Modify the C program in the project my_switch created by yourself in Section C. In the 
+//! modified system, when SW2 (connected with PF0) is pressed, the red LED (connected with 
+//! PF1) is turned off, otherwise the red LED is on. 
 //
 //*****************************************************************************
 
@@ -63,12 +63,12 @@ int main(void)
         if((GPIO_PORTF_DATA_R&0x01)==0x01) //SW2 is not pressed
 				{
 						// Turn on the LED.
-						GPIO_PORTF_DATA_R |= 0x02; // bitwise or 0x02
+						GPIO_PORTF_DATA_R |= RED_MASK; // bitwise or 0x02
 				}
 				else
 				{
 						// Turn off the LED.
-						GPIO_PORTF_DATA_R &= ~0x02; // and 0x02 negated
+						GPIO_PORTF_DATA_R &= ~RED_MASK; // 0x02 negated
 				}
     }
 }
