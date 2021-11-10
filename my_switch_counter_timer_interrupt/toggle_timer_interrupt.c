@@ -8,6 +8,20 @@
 
 #define PF123 (*((volatile unsigned long*) 0x40025038)) 
 
+//
+//! The system has two input switches (SW1 (PF4) and SW2 (PF0)) and three output
+//! LEDs (red (PF1), blue (PF2), and green (PF3) LEDs). Overall functionality of this 
+//! system is described in the following rules.
+//! 1) The red, blue, and green LEDs are used to display bit 0, 1, and 2 of the counter, 
+//! respectively.
+//! 2) The system starts with the counter equal to 0.
+//! 3) The counter increments by 1 every one second. The general purpose timer TIMER0 is 
+//! used to generate this periodic one second delay and periodic interrupt. The counter is 
+//! updated by the interrupt. The priority of the periodic interrupt is 0. 
+//! 4) If SW1 is pressed, the counter is incremented by 1; If SW2 is pressed, the counter is 
+//! decremented by 1. Both SW1 and SW2 generate edge-triggered interrupts to update the 
+//! counter. The priority of the edge-triggered interrupt is 2.
+//
 volatile unsigned int count = 0x00;
 
 void PortFunctionInit(void)
@@ -70,7 +84,7 @@ void Interrupt_Init(void)
 void Timer0A_Handler(void)//interrupt handler for Timer0A
 {
 		TIMER0_ICR_R |= 0x00000001; // acknowledge flag for Timer0A
-    count+=0x02;// increment count
+    		count+=0x02;// increment count
 		count &= 0x0E;
 }
 
@@ -87,27 +101,20 @@ void Timer1A_Init()
 		NVIC_PRI5_R &= ~0x0000D000; 		// configure Timer1A interrupt priority as 1: D 1101 slides   
 		NVIC_EN0_R |= 0x00200000;			 // enable interrupt timer1 21 data sheet 103
 		TIMER1_IMR_R |= 0x00000001;		// arm timeout interrupt	
-		//TIMER1_CTL_R |= 0x01;				 // enable timer 
+		
 }
 
 void Timer1A_Handler(void)
 {		
 		TIMER1_ICR_R |= 0x1;// clear flag
 		IntEnable(INT_GPIOF);// re enable port F interrupt also takes a few cycles to complete function
-		//NVIC_EN0_R |= 0x40000000;// another option to re enable GPIO port F
-		//GPIO_PORTF_IM_R |= 0x11; arm the interrupt
 }
 
 void GPIOPortF_Handler(void)
 {
 	//debounce by disabling interupt, waiting, then re-enabling it
 	IntDisable(INT_GPIOF);// disable interrupt.. takes a few clock cycles to complete function
-	//NVIC_DIS0_R &=~0x00200000;//0xE000E180 Very weird how this functions
-	//used to disable port F by inversely clearing all bits but the ones we want?
-	//not supposed to work this way from what the data sheet says but its how its working
-	//GPIO_PORTF_IM_R &= ~0x11; // disarm the interrupt
-	//NVIC_EN0_R &= ~0x40000000; This doesn't work to actually disable the interrupt using DIS0 instead which acts weirdly
-
+	
 	if(GPIO_PORTF_RIS_R&0x11){//if switches have action
 		
 		GPIO_PORTF_ICR_R |= 0x11; // acknowledge flags for PF4 & PF0
@@ -133,8 +140,8 @@ int main(void)
 		
 		PortFunctionInit();//initialize the GPIO ports
     Interrupt_Init();// initialize GPIO F interrupt
-		//Timer0A_Init(period);//initialize Timer0A and configure the interrupt
-		//Timer0A commented out till we can figure out why debounce isn't working
+		Timer0A_Init(period);//initialize Timer0A and configure the interrupt
+		Timer0A commented out till we can figure out why debounce isn't working
 		Timer1A_Init();//initialize Timer1A
 		IntGlobalEnable(); // globally enable interrupt
 		
