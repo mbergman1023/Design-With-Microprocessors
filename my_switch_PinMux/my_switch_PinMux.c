@@ -46,7 +46,7 @@
 #include "driverlib/gpio.h"
 #include "inc/tm4c123gh6pm.h"
 
-#define GREEN_MASK 0X08
+#define GREEN_MASK 0x08
 
 //*****************************************************************************
 //! Create and implement two new projects my_switch_PinMux and my_toggle_PinMux, which 
