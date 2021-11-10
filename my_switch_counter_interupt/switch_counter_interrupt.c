@@ -7,8 +7,15 @@
 //*****************************************************************************
 //
 //!
-//! Design a counter. The counter is incremented by 1 when SW1 (PF4) or SW2 (PF0) 
-//! is pressed.
+//! The system implements a 2-bit rotary counter on the LanchPad. The system has two
+//! input switches (SW1 (PF4) and SW2 (PF0)) and two output LEDs (green and red 
+//! LEDs). Overall functionality of this system is described in the following rules.
+//! 1) The green LED is used to display bit 0 of the counter; the red LED is used to display 
+//! bit 1.
+//! 2) The system starts with the counter equal to 0.
+//! 3) If SW1 is pressed, the counter is incremented by 1; If SW2 is pressed, the counter is 
+//! decremented by 1. Both SW1 and SW2 generate edge-triggered interrupts to update the 
+//! counter.
 //
 //*****************************************************************************
 
