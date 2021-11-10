@@ -1,0 +1,12 @@
+.\task1.o: task1.c
+.\task1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\task1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\task1.o: ..\..\..\..\inc/hw_memmap.h
+.\task1.o: ..\..\..\..\inc/hw_types.h
+.\task1.o: ..\..\..\..\driverlib/debug.h
+.\task1.o: ..\..\..\..\driverlib/sysctl.h
+.\task1.o: ..\..\..\..\driverlib/adc.h
+.\task1.o: ..\..\..\..\driverlib/interrupt.h
+.\task1.o: ..\..\..\..\inc/tm4c123gh6pm.h
+.\task1.o: ..\..\..\..\driverlib/timer.h
+.\task1.o: ..\..\..\..\driverlib/gpio.h
