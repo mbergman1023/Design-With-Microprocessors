@@ -7,8 +7,8 @@
 //*****************************************************************************
 //
 //!
-//! A very simple example that toggles the on-board red LED using direct register
-//! access.
+//! Modify the code to make the green LED (connected with PF3) flash. Also try to 
+//! make the LED flash 5 times slower. 
 //
 //*****************************************************************************
 
@@ -30,10 +30,9 @@ PortFunctionInit(void)
     //
     // Enable the GPIO pin for the red LED (PF1).  Set the direction as output, and
     // enable the GPIO pin for digital function.
-		//	red = 0x02 blue = 0x04 green = 0x08
-		//	white = 0x0E -> 2+4+8= 14
-    //																	76543210
-		//																	||||||||
+    //	red = 0x02 blue = 0x04 green = 0x08
+    //	white = 0x0E -> 2+4+8= 14
+   																	
     GPIO_PORTF_DIR_R |= GREEN_MASK; // 0x08 = 00001000 
     GPIO_PORTF_DEN_R |= GREEN_MASK;
 
@@ -56,9 +55,9 @@ int main(void)
     while(1)
     {
         // Delay for a bit.
-				SysCtlDelay(10000000);	// 2000000*5
+	SysCtlDelay(10000000);	// Original delay: 2000000
 
         // Toggle the LED.
-        GPIO_PORTF_DATA_R ^= GREEN_MASK; // bitwise xor so there's no carry bit
+        GPIO_PORTF_DATA_R ^= GREEN_MASK; // bitwise xor to change only specified bits
     }
 }
