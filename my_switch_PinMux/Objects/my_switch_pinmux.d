@@ -1,0 +1,11 @@
+.\objects\my_switch_pinmux.o: my_switch_PinMux.c
+.\objects\my_switch_pinmux.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\my_switch_pinmux.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\my_switch_pinmux.o: my_switch_PinMux.h
+.\objects\my_switch_pinmux.o: ..\..\..\..\inc/hw_types.h
+.\objects\my_switch_pinmux.o: ..\..\..\..\inc/hw_memmap.h
+.\objects\my_switch_pinmux.o: ..\..\..\..\inc/hw_gpio.h
+.\objects\my_switch_pinmux.o: ..\..\..\..\driverlib/sysctl.h
+.\objects\my_switch_pinmux.o: ..\..\..\..\driverlib/pin_map.h
+.\objects\my_switch_pinmux.o: ..\..\..\..\driverlib/gpio.h
+.\objects\my_switch_pinmux.o: ..\..\..\..\inc/tm4c123gh6pm.h
