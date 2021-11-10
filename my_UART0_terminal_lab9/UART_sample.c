@@ -9,9 +9,26 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
 
-#define RED_MASK 0X02;
-#define BLUE_MASK 0X04;
-#define GREEN_MASK 0X08;
+#define RED_MASK 0x02;
+#define BLUE_MASK 0x04;
+#define GREEN_MASK 0x08;
+//
+//! 'R’ Red LED turned on; the input key also
+//! printed on the serial terminal
+//! ‘r’ Red LED turned off; the input key also 
+//! printed on the serial terminal
+//! ‘B’ Blue LED turned on; the input key also 
+//! printed on the serial terminal
+//! ‘b’ Blue LED turned off; the input key also 
+//! printed on the serial terminal
+//! ‘G’ Green LED turned on; the input key also 
+//! printed on the serial terminal
+//! ‘g’ Green LED turned off; the input key also 
+//! printed on the serial terminal
+//! Any other keys No effect on LED status; error message 
+//! “Invalid Input” printed on the serial 
+//! terminal
+//
 
 void UART_Init(){
 	
