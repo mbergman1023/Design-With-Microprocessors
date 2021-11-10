@@ -51,6 +51,18 @@
 #define RED_LED 0X02;
 
 //*****************************************************************************
+//! The system has two input switches (SW1 and SW2) and two output LEDs (blue and 
+//! red LEDs). Overall functionality of this system is described in the following rules.
+//! 1) If SW1 is pressed, the red LED will be toggled every half second (the blue LED will 
+//! be off).
+//! 2) If SW1 is not pressed, the blue LED will be toggled every half second (the red LED
+//! will be off).
+//! 3) Whenever SW2 is pressed (no matter SW1 is pressed or not), both LEDs will be off. 
+//! Basically, you need to figure out which IO ports you need to configure, and how to 
+//! configure them. You also need to know how to implement specific delay, looping, and ifthen.
+//
+
+
 void
 PortFunctionInit(void)
 {
@@ -88,27 +100,6 @@ PortFunctionInit(void)
 		GPIO_PORTF_PUR_R |= 0x11; //ENABLE PULL UP RESISTOR FOR PF0&PF4
 		
 }
-
-/*
-
-System Requirements
-The system has two input switches (SW1 and SW2) and two output LEDs (blue and 
-red LEDs). Overall functionality of this system is described in the following rules.
-1) If SW1 is pressed, the red LED will be toggled every half second (the blue LED will 
-be off).
-
-2) If SW1 is not pressed, the blue LED will be toggled every half second (the red LED
-will be off).
-
-3) Whenever SW2 is pressed (no matter SW1 is pressed or not), both LEDs will be off. 
-
-SW2->PF0
-SW1->PF4
-
-REDLED->PF1
-BLUELED->PF2
-
-*/
 
 int main(void){
 	
